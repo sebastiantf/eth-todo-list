@@ -7,6 +7,27 @@
     <title>Ethereum | Todo List</title>
 
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+
+    <style>
+        main {
+            margin-top: 60px;
+        }
+        #content {
+            display: none;
+        }
+        form {
+        width: 350px;
+        margin-bottom: 10px;
+        }
+        ul {
+            margin-bottom: 0px;
+        }
+        #completedTaskList .content {
+            color: grey;
+            text-decoration: line-through;
+        }
+    </style>
+
 </head>
 <body>
     
@@ -25,7 +46,7 @@
                 <div id="loader" class="text-center">
                     <p class="text-center">Loading...</p>
                 </div>
-                <div class="content">
+                <div id="content">
                     <form onsubmit="App.createTask(); return false;">
                         <input type="text" class="form-control" id="newTask" placeholder="Add new task.." required>
                         <input type="submit" hidden="">
@@ -39,7 +60,6 @@
                         </div>
                     </ul>
                     <ul id="completedTaskList" class="list-unstyled">
-                        
                     </ul>
                 </div>
             </main>
