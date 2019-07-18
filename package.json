@@ -4,7 +4,8 @@
   "description": "A TODO list app using Ethereum Smart Contracts and Truffle Framework",
   "main": "truffle-config.js",
   "scripts": {
-    "test": "test"
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && sexit 1"
   },
   "keywords": [
     "ethereum",
