@@ -19,6 +19,33 @@
         </ul>
     </nav>
 
+    <div class="container-fluid">
+        <div class="row">
+            <main role="main" class="d-flex col-lg-12 justify-content-center">
+                <div id="loader" class="text-center">
+                    <p class="text-center">Loading...</p>
+                </div>
+                <div class="content">
+                    <form onsubmit="App.createTask(); return false;">
+                        <input type="text" class="form-control" id="newTask" placeholder="Add new task.." required>
+                        <input type="submit" hidden="">
+                    </form>
+                    <ul id="taskList" class="list-unstyled">
+                        <div id="taskTemplate" class="checkbox" style="display: none">
+                            <label>
+                                <input type="checkbox">
+                                <span class="content">Task content...</span>
+                            </label>
+                        </div>
+                    </ul>
+                    <ul id="completedTaskList" class="list-unstyled">
+                        
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="vendor/truffle-contract/dist/truffle-contract.min.js"></script>
