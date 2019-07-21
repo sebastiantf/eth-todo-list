@@ -1,6 +1,7 @@
 // App - app object
 App = {
     contracts: {},
+    loading: false,
     load: async () => {
         await App.loadWeb3();
         await App.loadAccount();
@@ -59,7 +60,21 @@ App = {
     },
 
     render: async () => {
+        if (App.loading) {
+            return
+        }
+
+        // Loading
+        App.setLoading(true);
+
         $('#account').html(App.account);
+
+        // Loading finished
+        App.setLoading(false);
+    },
+
+    setLoading: (loading) => {
+        App.loading = loading;
     }
 }
 
