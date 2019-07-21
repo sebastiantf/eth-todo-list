@@ -5,6 +5,7 @@ App = {
         await App.loadWeb3();
         await App.loadAccount();
         await App.loadContract();
+        await App.render();
     },
 
     // https://medium.com/metamask/https-medium-com-metamask-breaking-change-injecting-web3-7722797916a8
@@ -55,6 +56,10 @@ App = {
         App.todoList = await App.contracts.TodoList.deployed();
 
         console.log(App.todoList);
+    },
+
+    render: async () => {
+        $('#account').html(App.account);
     }
 }
 
