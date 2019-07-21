@@ -1,12 +1,20 @@
 // App - app object
 App = {
+    contracts: {},
     load: async () => {
         await App.loadWeb3();
         await App.loadAccount();
+        await App.loadContract();
     },
 
     // https://medium.com/metamask/https-medium-com-metamask-breaking-change-injecting-web3-7722797916a8
     loadWeb3: async () => {
+        if (typeof web3 !== 'undefined') {
+            App.web3Provider = web3.currentProvider
+            web3 = new Web3(web3.currentProvider)
+          } else {
+            window.alert("Please connect to Metamask.")
+          }
         // Modern dapp browsers...
         if (window.ethereum) {
             window.web3 = new Web3(ethereum);
@@ -31,9 +39,22 @@ App = {
         }
     },
 
-    loadAccount : async () => {
+    loadAccount: async () => {
         App.account = web3.eth.accounts[0];
         console.log(App.account);
+    },
+
+    loadContract: async() => {
+        const todoList = await $.getJSON('TodoList.json');
+        App.contracts.TodoList = TruffleContract(todoList);
+        App.contracts.TodoList.setProvider(App.web3Provider);
+
+        console.log(todoList);
+        console.log(App.contracts.TodoList);
+
+        App.todoList = await App.contracts.TodoList.deployed();
+
+        console.log(App.todoList);
     }
 }
 
