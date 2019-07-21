@@ -12,4 +12,14 @@ contract('TodoList', (accounts) => {
         assert.notEqual(address, null);
         assert.notEqual(address, undefined);
     });
+
+    it('lists tasks', async () => {
+        const taskCount = await this.todoList.taskCount();
+        const task = await this.todoList.tasks(taskCount);
+
+        assert.equal(task.id.toNumber(), taskCount.toNumber());
+        assert.equal(task.content, 'Check out apple.com for updates');
+        assert.equal(task.completed, false);
+        assert.equal(taskCount.toNumber(), 1);
+    });
 });
