@@ -75,6 +75,14 @@ App = {
 
     setLoading: (loading) => {
         App.loading = loading;
+
+        if(App.loading) {
+            $('#loader').show();
+            $('#content').hide();
+        } else {
+            $('#loader').hide();
+            $('#content').show();
+        }
     }
 }
 
